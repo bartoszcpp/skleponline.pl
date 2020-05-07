@@ -1,5 +1,5 @@
-.container {
-  color: violet;
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .bg {
@@ -18,11 +18,114 @@
 .border-right-bottom {
   background-image: linear-gradient(black, black), linear-gradient(black, black);
   background-repeat: no-repeat;
-  background-size: 5px 80%, 80% 5px;
+  background-size: 3px 80%, 80% 3px;
   background-position: right bottom, right bottom, 4px;
   width: max-content;
+  display: flex;
+  flex-wrap: wrap;
+}
+.border-left-top {
+  background-image: linear-gradient(black, black), linear-gradient(black, black);
+  background-repeat: no-repeat;
+  background-size: 3px 80%, 80% 3px;
+  background-position: left top, left top, 4px;
+  width: max-content;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.products {
+  align-items: center;
+  margin-bottom: 100px;
 }
 
 .imgProduct {
   padding: 15px;
+}
+
+.product-left {
+  display: flex;
+  align-items: center;
+}
+
+.product-right {
+  display: flex;
+  align-items: center;
+  text-align: -webkit-right;
+}
+
+.nameProduct {
+  margin: 20px;
+}
+
+.product-right > .nameProduct {
+  margin-left: auto;
+}
+
+.imgIcon {
+  max-width: 70%;
+}
+
+/*------------------------contactForm-----------*/
+.contact {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.form {
+  text-align: center;
+}
+
+.App {
+  margin: 0 auto;
+}
+h2 {
+  text-align: center;
+  font-weight: 500;
+}
+input[type="text"],
+input[type="email"],
+input[type="subject"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-bottom: 1px solid black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  outline: black;
+}
+.submit {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: none;
+  padding: 10px 50px;
+  cursor: pointer;
+}
+.submit:hover {
+  background-color: black;
+  color: white;
+}
+.btn-mod.btn-large {
+  height: auto;
+  padding: 13px 52px;
+  font-size: 15px;
+  transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  letter-spacing: 2px;
+}
+
+/*-----------------contact--------------------*/
+.bg-contact {
+  background-image: url("/contact-wallpaper.jpg");
+  height: 560px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.8;
 }
