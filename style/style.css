@@ -1,0 +1,28 @@
+.container {
+  color: violet;
+}
+
+.bg {
+  background-image: url("/background.jpg");
+  height: 560px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  padding: 90px 60px;
+}
+
+/*-------------------------Products-------------------*/
+.border-right-bottom {
+  background-image: linear-gradient(black, black), linear-gradient(black, black);
+  background-repeat: no-repeat;
+  background-size: 5px 80%, 80% 5px;
+  background-position: right bottom, right bottom, 4px;
+  width: max-content;
+}
+
+.imgProduct {
+  padding: 15px;
+}
