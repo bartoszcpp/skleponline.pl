@@ -130,3 +130,16 @@ textarea {
   background-size: cover;
   opacity: 0.8;
 }
+
+/*-----------------products------------------*/
+.containerProducts {
+  justify-content: center;
+}
+
+.oneOfProduct {
+  padding: 12px;
+}
+
+.card {
+  max-width: 320px;
+}
