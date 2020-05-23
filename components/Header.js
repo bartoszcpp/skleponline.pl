@@ -1,12 +1,18 @@
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+import Link from "next/link";
+import { AppContext } from "./contex/AppContex";
 const Header = () => {
-  const totalCount = null;
-  if (process.browser) {
-    totalCount = localStorage.getItem("totalCount");
-  }
+  const {
+    cart,
+    toggleCart,
+    price,
+    togglePrice,
+    count,
+    toggleCount,
+  } = useContext(AppContext);
+
   return (
     <>
       <Navbar fixed="top" bg="dark" expand="lg" variant="dark">
@@ -16,7 +22,11 @@ const Header = () => {
           <Nav className="ml-auto">
             <Nav.Link href="#home">Produkty</Nav.Link>
             <Nav.Link href="#home">Kontakt</Nav.Link>
-            <Nav.Link href="#home">{totalCount}</Nav.Link>
+            <Nav.Link href="#home">{count}</Nav.Link>
+
+            <Link href="/Cart">
+              <a>Cart</a>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

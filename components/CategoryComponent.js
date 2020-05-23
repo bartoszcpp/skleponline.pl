@@ -1,6 +1,8 @@
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import Link from "next/link";
+import { useContext } from "react";
+import { AppContext } from "./contex/AppContex";
 
 const POSTS_QUERY = gql`
   query MyQuery($data: String!) {
@@ -23,6 +25,14 @@ const POSTS_QUERY = gql`
 `;
 
 const CategoryComponent = (props) => {
+  const {
+    cart,
+    toggleCart,
+    price,
+    togglePrice,
+    count,
+    toggleCount,
+  } = useContext(AppContext);
   //console.log(props.cat);
   const { loading, error, data } = useQuery(POSTS_QUERY, {
     variables: {
@@ -33,56 +43,71 @@ const CategoryComponent = (props) => {
   const products = data.products.nodes;
   let totalCount = 0;
   let totalPrice = 0;
+
   const handleAddToCard = (slug, product, floatValue, zmienna) => {
-    totalCount = totalCount + 1;
-    localStorage.setItem("totalCount", totalCount);
     let existProduct = localStorage.getItem("item"); //sprawdza czy jest jakis produkt
-    let totalLocalPrice = parseInt(localStorage.getItem("totalPrice"));
-
-    let allStorageProduct = JSON.parse(existProduct);
-
+    let totalLocalPrice = parseInt(price);
+    let totalLocalCount = parseInt(count);
+    console.log(product);
+    product = JSON.stringify(product);
     // jesli produkt juz jakis jest
     if (existProduct) {
+      let allStorageProduct = cart;
       console.log(allStorageProduct);
 
       //sprawdza czy produkt juz jest
       const first = allStorageProduct.findIndex(
-        (product) => typeof product[slug] !== "undefined"
+        (product) => product["product"].slug === slug
       );
 
       //jezeli produkt juz istnieje, zaaktualizuj cene oraz ilosc
       if (first > -1) {
         let totalProductCount =
-          allStorageProduct[first][slug].totalProductCount + 1;
+          allStorageProduct[first]["product"].totalProductCount + 1;
         let totalProductPrice =
-          allStorageProduct[first][slug].totalProductPrice + floatValue;
+          allStorageProduct[first]["product"].totalProductPrice + floatValue;
+
+        product = JSON.parse(product);
 
         product["totalProductCount"] = totalProductCount;
         product["totalProductPrice"] = totalProductPrice;
 
-        allStorageProduct[first] = { [slug]: product };
+        allStorageProduct[first] = { product: product };
+        console.log(typeof product);
 
         totalLocalPrice = totalLocalPrice + floatValue;
-        localStorage.setItem("totalPrice", totalLocalPrice);
+        togglePrice(totalLocalPrice);
 
-        localStorage.setItem("item", JSON.stringify(allStorageProduct));
+        totalLocalCount = totalLocalCount + 1;
+        toggleCount(totalLocalCount);
+        console.log(allStorageProduct);
+        toggleCart(allStorageProduct);
+        console.log("haga");
       } else {
+        product = JSON.parse(product);
         product["totalProductCount"] = 1;
         product["totalProductPrice"] = floatValue;
-        allStorageProduct.push({ [slug]: product });
+        allStorageProduct.push({ product: product });
 
         totalLocalPrice = totalLocalPrice + floatValue;
-        localStorage.setItem("totalPrice", totalLocalPrice);
+        console.log(totalLocalPrice);
+        togglePrice(totalLocalPrice);
 
-        localStorage.setItem("item", JSON.stringify(allStorageProduct));
+        totalLocalCount = totalLocalCount + 1;
+        toggleCount(totalLocalCount);
+
+        toggleCart(allStorageProduct);
       }
 
       //jesli nie ma, dodaje pierwszą sztuke
     } else {
       totalPrice = totalPrice + floatValue;
-      localStorage.setItem("totalPrice", totalPrice);
+      togglePrice(totalPrice);
 
-      localStorage.setItem("item", JSON.stringify(zmienna));
+      totalCount = totalCount + 1;
+      toggleCount(totalCount);
+
+      toggleCart(zmienna);
     }
 
     //localStorage.clear();
@@ -92,7 +117,7 @@ const CategoryComponent = (props) => {
     let floatValue = parseInt(product.price.match(/[+-]?\d+(\.\d+)?/g)[0]);
     product["totalProductCount"] = 1;
     product["totalProductPrice"] = floatValue;
-    let zmienna = [{ [product.slug]: product }];
+    let zmienna = [{ product: product }];
     return (
       <div key={product.productId} className="col4 oneOfProduct">
         <Link href="/[cat]/[id]" as={`/${props.cat}/${product.slug}`}>
