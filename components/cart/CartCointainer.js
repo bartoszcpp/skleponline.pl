@@ -22,56 +22,25 @@ const CartContainer = () => {
       <BackgroundImage />
       <div className="content-wrap-cart">
         {cart ? (
-          <div className="woo-next-cart-wrapper container">
+          <div className="cart-wrapper">
             <h1 className="woo-next-cart-heading mt-5">Koszyk</h1>
-            <table className="table table-hover">
-              <thead>
-                <tr className="woo-next-cart-head-container">
-                  <th className="woo-next-cart-heading-el" scope="col" />
-                  <th className="woo-next-cart-heading-el" scope="col" />
-                  <th className="woo-next-cart-heading-el" scope="col">
-                    Produkt
-                  </th>
-                  <th className="woo-next-cart-heading-el" scope="col">
-                    Cena
-                  </th>
-                  <th className="woo-next-cart-heading-el" scope="col">
-                    Ilość
-                  </th>
-                  <th className="woo-next-cart-heading-el" scope="col">
-                    Łącznie
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {cart.map((item) => {
-                  if (item !== null)
-                    return (
-                      <CartItem
-                        key={item["product"].productId}
-                        item={item["product"]}
-                        cart={cart}
-                        price={price}
-                        count={count}
-                        togglePrice={togglePrice}
-                        toggleCount={toggleCount}
-                        toggleCart={toggleCart}
-                      />
-                    );
-                })}
-                {/* {cart.products.length &&
-              cart.products.map((item) => (
-                <CartItem
-                  key={item.productId}
-                  item={item}
-                  updateCartProcessing={updateCartProcessing}
-                  products={cart.products}
-                  handleRemoveProductClick={handleRemoveProductClick}
-                  updateCart={updateCart}
-                />
-              ))} */}
-              </tbody>
-            </table>
+
+            {cart.map((item) => {
+              if (item !== null)
+                return (
+                  <CartItem
+                    key={item["product"].productId}
+                    item={item["product"]}
+                    cart={cart}
+                    price={price}
+                    count={count}
+                    togglePrice={togglePrice}
+                    toggleCount={toggleCount}
+                    toggleCart={toggleCart}
+                  />
+                );
+            })}
+
             <p>Łącznie: {price}</p>
           </div>
         ) : (

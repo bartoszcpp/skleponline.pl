@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 const CartItem = (props) => {
   const {
@@ -79,23 +81,22 @@ const CartItem = (props) => {
   };
 
   return (
-    <tr className="woo-next-cart-item">
-      <th className="woo-next-cart-element woo-next-cart-el-close">
-        {/* Remove item */}
-        {/* <span className="woo-next-cart-close-icon"
-				      onClick={ ( event ) => handleRemoveProductClick( event, item.cartKey, products ) }>
-					<i className="fa fa-times-circle"/>
-				</span> */}
-        <span onClick={(e) => handleRemoveProduct(e, item.slug)}>x</span>
-      </th>
-      <td className="woo-next-cart-element">
+    <div className="row justify-content-center przedmioty">
+      <div className="col-sm-1 col-1">
+        <span onClick={(e) => handleRemoveProduct(e, item.slug)}>
+          <FontAwesomeIcon icon={faTimesCircle} />
+        </span>
+      </div>
+      <div className="col-sm-2 col-auto">
         <img width="64" src={item.image.sourceUrl} alt={item.image.slug} />
-      </td>
-      <td className="woo-next-cart-element">{item.name}</td>
-      <td className="woo-next-cart-element">{productPrice}</td>
-
+      </div>
+      <div className="col-sm-3">{item.name}</div>
+      <div className="col-sm-2">
+        <p>Cena: </p>
+        {productPrice}
+      </div>
       {/* Qty Input */}
-      <td className="woo-next-cart-element woo-next-cart-qty">
+      <div className="col-sm-2 numberProducts">
         <input
           type="number"
           min="1"
@@ -104,9 +105,12 @@ const CartItem = (props) => {
           className="woo-next-cart-qty-input form-control"
           onChange={(event) => handleCountChange(event)}
         />
-      </td>
-      <td className="woo-next-cart-element">{item.totalProductPrice}</td>
-    </tr>
+      </div>
+      <div className="col-sm-2">
+        <p>Łącznie: </p>
+        {item.totalProductPrice}
+      </div>
+    </div>
   );
 };
 
