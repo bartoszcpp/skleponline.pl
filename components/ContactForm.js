@@ -13,7 +13,7 @@ class ContactForm extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="contact">
         <h2>Skontaktuj się z nami!</h2>
         <form className="form" action="/action_page.php">
           <input

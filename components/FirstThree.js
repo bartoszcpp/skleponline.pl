@@ -40,31 +40,35 @@ const FirstThree = (props) => {
     if (count === 2 || count === 3) {
       return (
         <div key={product.productId} className="col-6 oneOfProduct">
-          <Link href="/[cat]/[id]" as={`/${props.cat}/${product.slug}`}>
-            <div className="card">
-              <ImgProduct
-                image={product.image.sourceUrl}
-                slug={product.image.slug}
-                price={thisPrice}
-                name={product.name}
-              />
-            </div>
-          </Link>
+          {/* <Link href="/[cat]/[id]" as={`/${props.cat}/${product.slug}`}> */}
+          <div className="card">
+            <ImgProduct
+              image={product.image.sourceUrl}
+              slug={product.image.slug}
+              price={thisPrice}
+              name={product.name}
+              cat={props.cat}
+              slugProduct={product.slug}
+            />
+          </div>
+          {/* </Link> */}
         </div>
       );
     } else {
       return (
         <div key={product.productId} className="oneOfProductTwo">
-          <Link href="/[cat]/[id]" as={`/${props.cat}/${product.slug}`}>
-            <div className="card">
-              <ImgProduct
-                image={product.image.sourceUrl}
-                slug={product.image.slug}
-                price={thisPrice}
-                name={product.name}
-              />
-            </div>
-          </Link>
+          {/* <Link href="/[cat]/[id]" as={`/${props.cat}/${product.slug}`}> */}
+          <div className="card">
+            <ImgProduct
+              image={product.image.sourceUrl}
+              slug={product.image.slug}
+              price={thisPrice}
+              name={product.name}
+              cat={props.cat}
+              slugProduct={product.slug}
+            />
+          </div>
+          {/* </Link> */}
         </div>
       );
     }
