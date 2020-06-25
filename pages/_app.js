@@ -6,7 +6,7 @@ import ApolloClient from "apollo-boost";
 import { AppProvider } from "../components/contex/AppContex";
 
 const client = new ApolloClient({
-  uri: "http://www.bartcpp.ssd-linuxpl.com/graphql",
+  uri: "https://www.bartcpp.ssd-linuxpl.com/graphql",
 });
 
 // This default export is required in a new `pages/_app.js` file.
