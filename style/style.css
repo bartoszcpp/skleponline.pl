@@ -379,7 +379,8 @@ textarea {
   padding-bottom: 20px;
 }
 
-.cart-wrapper > .row > div > p {
+.cart-wrapper > .row > div > p,
+.deleteSpan {
   display: none;
 }
 
@@ -393,8 +394,24 @@ textarea {
   padding: 20px 40px;
 }
 
+.cart-wrapper img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.deleteItem {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .przedmioty {
   margin: 50px 0;
+}
+
+.total {
+  margin-top: 50px;
+  border-top: 1px solid #dee2e6;
+  padding-top: 20px;
 }
 
 @media (max-width: 450px) {
@@ -420,7 +437,8 @@ textarea {
   .przedmioty {
     margin: 0;
   }
-  .cart-wrapper > .row > div > p {
+  .cart-wrapper > .row > div > p,
+  .deleteSpan {
     display: contents;
   }
 }

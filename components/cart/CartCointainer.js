@@ -40,11 +40,14 @@ const CartContainer = () => {
                   />
                 );
             })}
-
-            <p>Łącznie: {price}</p>
+            <div className="total">
+              <p>Łącznie: {price}</p>
+            </div>
           </div>
         ) : (
-          <div>x</div>
+          <div>
+            <p>Brak produktów w koszyku</p>
+          </div>
         )}
       </div>
     </>

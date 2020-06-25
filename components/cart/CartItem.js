@@ -82,21 +82,16 @@ const CartItem = (props) => {
 
   return (
     <div className="row justify-content-center przedmioty">
-      <div className="col-sm-1 col-1">
-        <span onClick={(e) => handleRemoveProduct(e, item.slug)}>
-          <FontAwesomeIcon icon={faTimesCircle} />
-        </span>
-      </div>
-      <div className="col-sm-2 col-auto">
+      <div className="col-sm-2 order-sm-2">
         <img width="64" src={item.image.sourceUrl} alt={item.image.slug} />
       </div>
-      <div className="col-sm-3">{item.name}</div>
-      <div className="col-sm-2">
+      <div className="col-sm-4 order-sm-3">{item.name}</div>
+      <div className="col-sm-2 order-sm-4">
         <p>Cena: </p>
         {productPrice}
       </div>
       {/* Qty Input */}
-      <div className="col-sm-2 numberProducts">
+      <div className="col-sm-2 order-sm-5 numberProducts">
         <input
           type="number"
           min="1"
@@ -106,10 +101,16 @@ const CartItem = (props) => {
           onChange={(event) => handleCountChange(event)}
         />
       </div>
-      <div className="col-sm-2">
+      <div className="col-sm-2 deleteItem order-sm-1">
+        <span onClick={(e) => handleRemoveProduct(e, item.slug)}>
+          <FontAwesomeIcon icon={faTimesCircle} />
+          <span className="deleteSpan"> Usuń produkt</span>
+        </span>
+      </div>
+      {/* <div className="col-sm-2">
         <p>Łącznie: </p>
         {item.totalProductPrice}
-      </div>
+      </div> */}
     </div>
   );
 };
