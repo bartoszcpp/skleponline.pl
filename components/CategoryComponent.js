@@ -6,7 +6,7 @@ import { AppContext } from "./contex/AppContex";
 
 const POSTS_QUERY = gql`
   query MyQuery($data: String!) {
-    products(where: { category: $data }) {
+    products(where: { category: $data }, first: 12) {
       nodes {
         name
         slug
@@ -115,11 +115,15 @@ const CategoryComponent = (props) => {
 
   const allProducts = products.map((product) => {
     let floatValue = parseInt(product.price.match(/[+-]?\d+(\.\d+)?/g)[0]);
+    let thisPrice = product.price.replace(/&nbsp;/i, " ");
     product["totalProductCount"] = 1;
     product["totalProductPrice"] = floatValue;
     let zmienna = [{ product: product }];
     return (
-      <div key={product.productId} className="col4 oneOfProduct">
+      <div
+        key={product.productId}
+        className="col-lg-4 col-sm-6 oneOfProduct-border"
+      >
         <Link href="/[cat]/[id]" as={`/${props.cat}/${product.slug}`}>
           <div className="card">
             <img
@@ -129,19 +133,17 @@ const CategoryComponent = (props) => {
             />
             <div className="card-body">
               <h5 className="card-title">{product.name}</h5>
-              <p
-                className="card-text"
-                dangerouslySetInnerHTML={{ __html: product.shortDescription }}
-              />
+              <h6>{thisPrice}</h6>
             </div>
           </div>
         </Link>
         <button
+          className="addToCard"
           onClick={() =>
             handleAddToCard(product.slug, product, floatValue, zmienna)
           }
         >
-          Dodaj
+          DO KOSZYKA
         </button>
       </div>
     );
@@ -149,7 +151,7 @@ const CategoryComponent = (props) => {
 
   return (
     <div className="container containerProdukty">
-      <div className="row containerProducts">{allProducts}</div>
+      <div className="row containerProducts-border">{allProducts}</div>
     </div>
   );
 };
