@@ -47,7 +47,7 @@ const Products = (props) => {
               <div className="col-6 colFlex FirstThree">
                 <FirstThree
                   cat={category.name}
-                  count={count1}
+                  counter={count1}
                   number={number}
                 />
               </div>
@@ -68,7 +68,7 @@ const Products = (props) => {
               <div className="col-6 colFlex FirstThree">
                 <FirstThree
                   cat={category.name}
-                  count={count2}
+                  counter={count2}
                   number={number}
                 />
               </div>

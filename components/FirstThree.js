@@ -1,6 +1,8 @@
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import Link from "next/link";
+import { useContext } from "react";
+import { AppContext } from "./contex/AppContex";
 
 import ImgProduct from "./ImgProduct";
 
@@ -25,7 +27,17 @@ const POSTS_QUERY = gql`
 `;
 
 const FirstThree = (props) => {
-  const { cat, count, number } = props;
+  const { cat, counter, number } = props;
+
+  const {
+    cart,
+    toggleCart,
+    price,
+    togglePrice,
+    count,
+    toggleCount,
+  } = useContext(AppContext);
+
   const { loading, error, data } = useQuery(POSTS_QUERY, {
     variables: {
       data: cat,
@@ -37,7 +49,8 @@ const FirstThree = (props) => {
   const products = data.products.nodes;
   const allProducts = products.map((product) => {
     let thisPrice = product.price.replace(/&nbsp;/i, " ");
-    if (count === 2 || count === 3) {
+
+    if (counter === 2 || counter === 3) {
       return (
         <div key={product.productId} className="col-6 oneOfProduct">
           {/* <Link href="/[cat]/[id]" as={`/${props.cat}/${product.slug}`}> */}
@@ -45,10 +58,17 @@ const FirstThree = (props) => {
             <ImgProduct
               image={product.image.sourceUrl}
               slug={product.image.slug}
-              price={thisPrice}
+              thisPrice={thisPrice}
               name={product.name}
               cat={props.cat}
               slugProduct={product.slug}
+              product={product}
+              price={price}
+              count={count}
+              cart={cart}
+              togglePrice={togglePrice}
+              toggleCount={toggleCount}
+              toggleCart={toggleCart}
             />
           </div>
           {/* </Link> */}
