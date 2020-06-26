@@ -117,11 +117,12 @@
 }
 
 .imgProduct {
-  padding: 10px;
+  /* padding: 10px; */
   /* max-width: 100%;
   width: 480px; */
   width: inherit;
   height: 100%;
+  height: -webkit-fill-available;
 }
 
 .product-left {
@@ -133,6 +134,11 @@
   display: flex;
   align-items: center;
   text-align: -webkit-right;
+}
+
+.product-left,
+.product-right {
+  margin: 10px;
 }
 
 .nameProduct {
@@ -368,6 +374,11 @@ textarea {
   border-bottom: 1px solid white;
   margin: 0px 92px;
   margin-bottom: 10px;
+}
+
+/*---------------------ImgProductCat-----------------*/
+.imgProductHover {
+  height: 100%;
 }
 
 /*---------------------cart---------------------------*/

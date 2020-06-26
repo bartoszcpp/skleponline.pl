@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import FirstThree from "./FirstThree";
+import ImgProductCat from "./ImgProductCat";
 
 const POSTS_QUERY = gql`
   {
@@ -37,10 +38,9 @@ const Products = (props) => {
             <div key={category.databaseId} className="row products">
               <Link href="/[cat]" as={category.slug}>
                 <div className="col-6 colFlex product-left">
-                  <img
-                    className="imgProduct img-fluid"
+                  <ImgProductCat
                     src={category.image.sourceUrl}
-                    alt="produkt1"
+                    name={category.name}
                   />
                 </div>
               </Link>
@@ -74,10 +74,9 @@ const Products = (props) => {
               </div>
               <Link href="/[cat]" as={category.slug}>
                 <div className="col-6 colFlex product-right">
-                  <img
-                    className="imgProduct img-fluid"
+                  <ImgProductCat
                     src={category.image.sourceUrl}
-                    alt="produkt1"
+                    name={category.name}
                   />
                 </div>
               </Link>
