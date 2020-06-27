@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import IdComponents from "../../components/IdComponents";
 import Header from "../../components/Header";
 import BackgroundImage from "../../components/BackgroungImage";
+import Footer from "../../components/Footer";
 
 const id = () => {
   const router = useRouter();
@@ -11,6 +12,7 @@ const id = () => {
       <Header />
       <BackgroundImage />
       <IdComponents id={id} />
+      <Footer />
     </>
   );
 };

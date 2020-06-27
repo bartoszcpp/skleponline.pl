@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Header from "../components/Header";
 import BackgroundImage from "../components/BackgroungImage";
 import CategoryComponent from "../components/CategoryComponent";
+import Footer from "../components/Footer";
 
 const cat = () => {
   const router = useRouter();
@@ -12,6 +13,7 @@ const cat = () => {
       <Header />
       <BackgroundImage />
       <CategoryComponent cat={cat} />
+      <Footer />
     </>
   );
 };

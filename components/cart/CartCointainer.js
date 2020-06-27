@@ -3,6 +3,7 @@ import BackgroundImage from "../BackgroungImage";
 import CartItem from "./CartItem";
 import { useContext } from "react";
 import { AppContext } from "../contex/AppContex";
+import Footer from "../Footer";
 
 const CartContainer = () => {
   const {
@@ -50,6 +51,7 @@ const CartContainer = () => {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 };
