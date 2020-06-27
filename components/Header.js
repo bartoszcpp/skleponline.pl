@@ -28,7 +28,7 @@ const Header = () => {
             <Nav.Link href="/zzgrawer">GRAWER</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Link href="/Cart">KONTAKT</Nav.Link>
+            <Nav.Link href="/">KONTAKT</Nav.Link>
             {/* <Nav.Link href="#home">{count}</Nav.Link> */}
             <Nav.Link href="/Cart">KOSZYK</Nav.Link>
           </Nav>

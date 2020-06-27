@@ -39,26 +39,39 @@ const IdComponents = (props) => {
   });
   if (loading) return <p>Loading Posts...</p>;
   const product = data.product;
+
+  let floatValue = parseInt(product.price.match(/[+-]?\d+(\.\d+)?/g)[0]);
+
   return (
-    <div className="container">
-      <img src={product.image.sourceUrl} alt="" /> <br />
-      <button
-        className="addToCard"
-        onClick={() =>
-          handleAddToCard(
-            product.slug,
-            product,
-            price,
-            count,
-            cart,
-            togglePrice,
-            toggleCount,
-            toggleCart
-          )
-        }
-      >
-        DO KOSZYKA
-      </button>
+    <div className="row products">
+      <div className="col-md-7">
+        <img
+          className="img-fluid imgOfProduct"
+          src={product.image.sourceUrl}
+          alt=""
+        />{" "}
+      </div>
+      <div className="col-md-5 infoProduct">
+        <h3>{product.name}</h3>
+        <h4>{floatValue} zł</h4>
+        <button
+          className="addToCard"
+          onClick={() =>
+            handleAddToCard(
+              product.slug,
+              product,
+              price,
+              count,
+              cart,
+              togglePrice,
+              toggleCount,
+              toggleCart
+            )
+          }
+        >
+          DO KOSZYKA
+        </button>
+      </div>
     </div>
   );
 };

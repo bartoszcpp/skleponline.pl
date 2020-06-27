@@ -47,6 +47,16 @@
   padding-bottom: 0 !important;
 }
 
+/*-------------------------HomePage--------------------*/
+.contactUs {
+  margin-top: 100px;
+}
+
+.contactUs button {
+  margin-top: 30px;
+  max-width: 70%;
+}
+
 /*-------------------------FirstInfo-------------------*/
 .firstDes {
   font-size: 22px;
@@ -423,12 +433,53 @@ textarea {
   padding-top: 20px;
 }
 
+/*--------------------IdComponents-----------------*/
+.imgOfProduct {
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.infoProduct {
+  margin-top: 50px;
+}
+
+.infoProduct h3,
+.infoProduct h4 {
+  margin: 30px 0;
+}
+
+/*---------------------Footer------------------*/
+footer {
+  background-color: black;
+  padding: 30px 0;
+}
+
+footer a {
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+footer p {
+  color: rgb(214, 214, 214);
+}
+
+.footerMenu {
+  margin-top: 30px;
+  padding: 20px;
+}
+
 @media (max-width: 450px) {
   .products {
     padding: 35px 0;
   }
   .oneOfProductTwo {
     padding: 3px 20%;
+  }
+
+  .footerMenu a:last-child {
+    display: block !important;
   }
 }
 
