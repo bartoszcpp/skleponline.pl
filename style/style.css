@@ -132,7 +132,6 @@
   width: 480px; */
   width: inherit;
   height: 100%;
-  height: -webkit-fill-available;
 }
 
 .product-left {
