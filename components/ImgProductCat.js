@@ -6,7 +6,7 @@ const ImgProductCat = (props) => {
   const { src, name } = props;
   const [isShown, setIsShown] = useState(false);
   const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-device-width: 1000px)",
+    query: "(min-device-width: 1170px)",
   });
   return (
     <div
