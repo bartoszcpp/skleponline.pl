@@ -37,6 +37,7 @@
 
 .navbar {
   background-color: #000000b8;
+  z-index: 999999999;
 }
 
 .logoPng {
@@ -544,7 +545,19 @@ footer p {
   }
 }
 
-@media (max-width: 801px) {
+@media (max-width: 575px) {
+  .containerProducts-border {
+    margin: 20px;
+  }
+  .oneOfProduct-border {
+    padding: 10px 70px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 1079px) {
+  .oneOfProduct-border {
+    padding: 10px 10px;
+  }
   .containerProducts-border {
     margin: 40px;
   }
@@ -636,9 +649,5 @@ footer p {
 @media (max-width: 1080px) {
   .FirstInfo {
     padding: 0 10px;
-  }
-
-  .oneOfProduct-border {
-    padding: 10px 10px;
   }
 }
