@@ -42,7 +42,7 @@ const CategoryComponent = (props) => {
   });
   if (loading)
     return (
-      <div class="lds-ring">
+      <div className="lds-ring">
         <div></div>
         <div></div>
         <div></div>
