@@ -151,6 +151,11 @@
   margin: 10px;
 }
 
+.product-left:hover,
+.product-right:hover {
+  cursor: pointer;
+}
+
 .nameProduct {
   margin: 20px;
 }
@@ -339,6 +344,10 @@ textarea {
   max-width: 100px;
 }
 
+.imgMore:hover {
+  cursor: pointer;
+}
+
 .imgMoreLeft {
   margin-left: 0%;
   margin-right: 90%;
@@ -484,6 +493,11 @@ footer {
 footer a {
   padding: 10px;
   color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: rgb(197, 197, 197);
   text-decoration: none;
 }
 

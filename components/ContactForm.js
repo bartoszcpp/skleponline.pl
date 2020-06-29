@@ -1,4 +1,5 @@
 import { Component } from "react";
+import axios from "axios";
 
 class ContactForm extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class ContactForm extends Component {
       subject: "",
       email: "",
       message: "",
+      info: "",
     };
   }
 
@@ -15,7 +17,7 @@ class ContactForm extends Component {
     return (
       <div className="contact">
         <h2>Skontaktuj się z nami!</h2>
-        <form className="form" action="/action_page.php">
+        <form className="form" method="POST" encType="multipart/form-data">
           <input
             type="text"
             id="fname"
@@ -54,6 +56,7 @@ class ContactForm extends Component {
           >
             WYŚLIJ WIADOMOŚĆ
           </button>
+          <p>{this.state.info}</p>
         </form>
       </div>
     );
@@ -71,7 +74,25 @@ class ContactForm extends Component {
     this.setState({ message: event.target.value });
   }
 
-  handleSubmit(event) {}
+  handleFormSubmit(event) {
+    event.preventDefault();
+    axios({
+      method: "post",
+      url: "https://getform.io/f/d9ed422f-e4d4-4ba3-adeb-7426c57d5898",
+      data: {
+        nazwa: this.state.fname,
+        temat: this.state.subject,
+        email: this.state.email,
+        wiadomość: this.state.message,
+      },
+    })
+      .then((r) => {
+        this.setState({ info: "Dziękujemy!" });
+      })
+      .catch((r) => {
+        this.setState({ info: "Coś poszło nie tak :(" });
+      });
+  }
 }
 
 export default ContactForm;
