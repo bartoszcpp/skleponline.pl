@@ -37,7 +37,15 @@ const IdComponents = (props) => {
       data: props.id,
     },
   });
-  if (loading) return <p>Loading Posts...</p>;
+  if (loading)
+    return (
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
   const product = data.product;
 
   let floatValue = parseInt(product.price.match(/[+-]?\d+(\.\d+)?/g)[0]);

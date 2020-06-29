@@ -45,7 +45,15 @@ const FirstThree = (props) => {
     },
   });
   let countImg = 0;
-  if (loading) return <p>Loading Posts...</p>;
+  if (loading)
+    return (
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
   const products = data.products.nodes;
   const allProducts = products.map((product) => {
     let thisPrice = product.price.replace(/&nbsp;/i, " ");

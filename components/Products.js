@@ -23,7 +23,15 @@ const Products = (props) => {
   const { count1, count2, number } = props;
   const { loading, error, data } = useQuery(POSTS_QUERY);
   let count = 1;
-  if (loading) return <p>Loading Posts...</p>;
+  if (loading)
+    return (
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
   if (error) return <p>Something wrong happened!</p>;
   const categories = data.productCategories.nodes;
 

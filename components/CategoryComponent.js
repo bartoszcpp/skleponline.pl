@@ -40,7 +40,15 @@ const CategoryComponent = (props) => {
       data: props.cat,
     },
   });
-  if (loading) return <p>Loading Posts...</p>;
+  if (loading)
+    return (
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
 
   const products = data.products.nodes;
 
